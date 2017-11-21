@@ -37,6 +37,9 @@ public class Main {
             case '1':
                 UsuarioDAO u = new UsuarioDAO();
                 return u.novoUsuario();
+            case '2':
+                UsuarioDAO u = new UsuarioDAO();
+                return u.updateUsuario();
             default:
                 throw new Exception("Opcao nao implementada");
         }
@@ -47,7 +50,7 @@ public class Main {
         System.out.println(""
             + "0 - Sair \n"
             + "1 - Criar usuario \n"
-            + "2 - Logar \n"
+            + "2 - Atualizar usuario \n"
             + "");
     }
 

@@ -43,36 +43,9 @@ public class UsuarioDTO implements DTO {
         this.cpf = "";
     }
 
-//    public void cria(Scanner entrada) {
-//        System.out.println("Digite o nome do usuario:");
-//        this.setNome(entrada.nextLine());
-//
-//        System.out.println("Digite o email do usuario:");
-//        this.setEmail(entrada.nextLine());
-//
-//        String senha;
-//        String confSenha;
-//        do {
-//            System.out.println("Digite a senha do usuario:");
-//            senha = entrada.nextLine();
-//
-//            System.out.println("Confirme a senha do usuario:");
-//            confSenha = entrada.nextLine();
-//
-//        }while (! senha.equals(confSenha) );
-//
-//        this.setSenha(senha);
-//
-//        System.out.println("Digite o telefone do usuario:");
-//        this.setTelefone( entrada.nextLine() );
-//
-//        System.out.println("Digite o rg do usuario:");
-//        this.setRg( entrada.nextLine() );
-//
-//        System.out.println("Digite o cpf do usuario:");
-//        this.setCpf( entrada.nextLine() );
-//
-//    }
+    public UsuarioDTO( byte[] usuarioByte ) {
+        this.setAttrsByteArray( usuarioByte );
+    }
 
     public void deleta(short id){
         int pos = 0;
@@ -129,7 +102,7 @@ public class UsuarioDTO implements DTO {
     }
 
     @Override
-    public void setAttrsByteArray(byte[] usuarioByteArray) {
+        public void setAttrsByteArray(byte[] usuarioByteArray) {
         byte[] idBA, emailBA, senhaBA, telefoneBA, rgBA, cpfBA;
 
 

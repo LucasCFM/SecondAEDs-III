@@ -17,7 +17,7 @@ public class DB {
     private DB() {
         try{
             this.f = new File( "db_01.aeds" );
-//            this.DB_PATH = f.getParentFile().getAbsoluteFile().getParent();
+//            this.DB_PATH = f.getParentFile().getParentFile().getParent();
 //            System.out.println(DB_PATH);
 //            this.f = new File( this.DB_PATH + "db_01.aeds" );
 
@@ -40,6 +40,32 @@ public class DB {
             e.printStackTrace();
         }
         return valor;
+    }
+
+    public short getShort() {
+        try {
+            return arq.readShort();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return (short) -1;
+        }
+    }
+
+    public byte[] getByteArray(int index, int numBytes, String entidade) {
+        if ( !f.getName().contains(entidade) )
+            this.setEntidade(entidade);
+
+        if ( index > f.length() )
+            return null;
+
+        byte[] b = new byte[numBytes];
+        try {
+            arq.read(b, index, numBytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return b;
     }
 
     private void setEntidade(String entidade){
@@ -113,16 +139,6 @@ public class DB {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static UsuarioDTO getUsuarioByEmail(String email){
-        UsuarioDTO usuario = new UsuarioDTO();
-        return usuario;
-    }
-
-    public static UsuarioDTO getUsuarioByCpf(String cpf){
-        UsuarioDTO usuario = new UsuarioDTO();
-        return usuario;
     }
 
 }
